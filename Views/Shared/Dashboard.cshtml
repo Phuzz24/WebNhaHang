@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebNhaHang</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard {
+        display: flex;
+    }
+
+    .sidebar {
+        width: 200px;
+        background-color: #333;
+        color: white;
+        height: 100vh;
+        padding-top: 20px;
+    }
+
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .sidebar ul li {
+                padding: 10px;
+                text-align: left;
+            }
+
+                .sidebar ul li a {
+                    color: white;
+                    text-decoration: none;
+                    display: block;
+                    padding: 10px;
+                }
+
+                    .sidebar ul li a:hover {
+                        background-color: #575757;
+                    }
+
+                .sidebar ul li ul {
+                    display: none;
+                }
+
+                .sidebar ul li:hover ul {
+                    display: block;
+                }
+
+    .content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+
+    .header {
+        background-color: #f1f1f1;
+        padding: 10px;
+    }
+
+    .main-content {
+        margin-top: 20px;
+    }
+
+    </style>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li>
+                    <a href="#">Quản lý khách hàng</a>
+                    <ul>
+                        <li><a asp-controller="Customers" asp-action="Index">Danh sách khách hàng</a></li>
+                        <li><a asp-controller="Customers" asp-action="Create">Thêm khách hàng mới</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Quản lý món ăn</a>
+                    <ul>
+                        <li><a asp-controller="Menus" asp-action="Index">Danh sách món ăn</a></li>
+                        <li><a asp-controller="Menus" asp-action="Create">Thêm món ăn mới</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Quản lý đơn hàng</a>
+                    <ul>
+                        <li><a asp-controller="Orders" asp-action="Index">Danh sách đơn hàng</a></li>
+                        <li><a asp-controller="Orders" asp-action="Create">Tạo đơn hàng mới</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Quản lý bàn ăn</a>
+                    <ul>
+                        <li><a asp-controller="Tables1" asp-action="Index">Danh sách bàn</a></li>
+                        <li><a asp-controller="Tables1" asp-action="Create">Thêm bàn mới</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="header">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+
+            <div class="main-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

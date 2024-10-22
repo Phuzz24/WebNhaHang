@@ -1,0 +1,68 @@
+﻿<html>
+<head>
+    <title>Trang chủ</title>
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="~/font/fontawesome-free-6.6.0-web/css/all.css" rel="stylesheet" />
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/HinhAnh/logo.png" href="" />
+        </div>
+        <div class="text">
+            <a href="">TRANG CHỦ</a>
+            <a href="">MENU</a>
+            <a href="">ĐẶT BÀN</a>
+            <a href="">GIỚI THIỆU</a>
+            <!-- Kiểm tra trạng thái đăng nhập từ Session -->
+            @if (Context.Session.GetString("Username") != null)
+            {
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="userDropdown">
+                        <i class="fa-solid fa-user"></i> @Context.Session.GetString("Username")
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="/Account/EditInfo">Xem thông tin cá nhân</a>
+                        <a class="dropdown-item" href="/Account/ChangePassword">Đổi mật khẩu</a>
+                        <a class="dropdown-item" href="/Account/Logout">Đăng xuất</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a href="/Account/Login">
+                    <i class="fa-solid fa-user"></i>
+                    Đăng nhập
+                </a>
+            }
+@model IEnumerable<WebNhaHang.Models.Customer>
+
+<h2>Danh sách khách hàng</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên khách hàng</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.FullName</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+                <td>@customer.PhoneNumber</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@customer.Customer_ID">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@customer.Customer_ID">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Thêm khách hàng mới</a>

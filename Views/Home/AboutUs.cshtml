@@ -1,0 +1,65 @@
+﻿<html>
+<head>
+   <title>Giới thiệu</title>
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="~/font/fontawesome-free-6.6.0-web/css/all.css" rel="stylesheet" />
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="~/HinhAnh/logo.png" href="" />
+        </div>
+        <div class="text">
+            <a href="/Home/TrangChu">TRANG CHỦ</a>
+            <a href="">MENU</a>
+            <a href="">ĐẶT BÀN</a>
+            <a href="">GIỚI THIỆU</a>
+            <!-- Kiểm tra trạng thái đăng nhập từ Session -->
+            @if (Context.Session.GetString("Username") != null)
+            {
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="userDropdown">
+                        <i class="fa-solid fa-user"></i> @Context.Session.GetString("Username")
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="/Account/EditInfo">Xem thông tin cá nhân</a>
+                        <a class="dropdown-item" href="/Account/ChangePassword">Đổi mật khẩu</a>
+                        <a class="dropdown-item" href="/Account/Logout">Đăng xuất</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a href="/Account/Login">
+                    <i class="fa-solid fa-user"></i>
+                    Đăng nhập
+                </a>
+            }
+        </div>
+        
+    </div>
+    <div class="heading">
+        <p>ABOUT US</p>
+    </div>
+    <div class="about-us">
+        <p>Khả Khẩu is a comprehensive restaurant management system designed to streamline and enhance daily operations for restaurants of all sizes. Our platform offers solutions for order management, table reservations, inventory tracking, and staff scheduling, helping businesses run efficiently and improve customer service. Founded by a team of food enthusiasts and tech experts, Khả Khẩu focuses on providing a user-friendly and customizable system to meet the unique needs of each establishment. Our mission is to support restaurant owners with the tools they need to succeed in the fast-paced hospitality industry.</p>
+
+    </div>
+    <div class="contact">
+        <div class="contact-left">
+            <img src="~/HinhAnh/logo.png" />
+            <h1>©Copyright 2024 KHAKHAU. All Rights Reserved</h1>
+        </div>
+        <div class="contact-right">
+            <h1>CONTACT</h1>
+            <h1>Street: D2 street, Ward 25, Binh Thanh District</h1>
+            <h1>City: Ho Chi Minh</h1>
+            <h1>State/Province/Area: Ho Chi Minh City</h1>
+            <h1>Phone number:  (84-8) 3 512 6379/(84-8) 3 804 0955/(84-8) 3 804 0980</h1>
+            <h1>Email: abcd@email.com</h1>
+        </div>
+    </div>
+</body>
+</html>
