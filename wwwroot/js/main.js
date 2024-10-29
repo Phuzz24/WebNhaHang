@@ -36,3 +36,35 @@
     });
 });
 
+
+// Thêm hiệu ứng khi người dùng cuộn trang đến các section
+$(document).ready(function () {
+    $(window).scroll(function () {
+        $('.about-section, .mission-section, .gallery-section').each(function () {
+            const position = $(this).offset().top;
+            const windowTop = $(window).scrollTop();
+
+            if (windowTop > position - $(window).height() + 100) {
+                $(this).addClass('fade-in');
+            }
+        });
+    });
+});
+
+// Thêm class fade-in để tạo hiệu ứng mờ dần
+$('.about-section, .mission-section, .gallery-section').addClass('hidden');
+
+// CSS để ẩn trước khi hiển thị với hiệu ứng
+$('.hidden').css({
+    opacity: 0,
+    transform: 'translateY(20px)',
+    transition: 'opacity 0.8s, transform 0.8s',
+});
+
+// CSS cho hiệu ứng fade-in
+$('.fade-in').css({
+    opacity: 1,
+    transform: 'translateY(0)',
+});
+
+

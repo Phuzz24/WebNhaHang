@@ -1,0 +1,101 @@
+﻿<html>
+<head>
+    <title>Trang chủ</title>
+    <link href="~/font/fontawesome-free-6.6.0-web/css/all.css" rel="stylesheet" />
+    <script src="/js/main.js"></script>
+    <link href="/css/menu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/HinhAnh/logo.png" href="" />
+        </div>
+        <div class="text">
+            <a href="">TRANG CHỦ</a>
+            <a href="">MENU</a>
+            <a href="">ĐẶT BÀN</a>
+            <a href="">GIỚI THIỆU</a>
+            <!-- Kiểm tra trạng thái đăng nhập từ Session -->
+            @if (Context.Session.GetString("Username") != null)
+            {
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="userDropdown">
+                        <i class="fa-solid fa-user"></i> @Context.Session.GetString("Username")
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="/Account/EditInfo">Xem thông tin cá nhân</a>
+                        <a class="dropdown-item" href="/Account/ChangePassword">Đổi mật khẩu</a>
+                        <a class="dropdown-item" href="/Account/Logout">Đăng xuất</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a href="/Account/Login">
+                    <i class="fa-solid fa-user"></i>
+                    Đăng nhập
+                </a>
+            }
+        </div>
+        <div class="iconz">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Thực Đơn Nhà Hàng</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="filter-section">
+            <input type="text" id="search" placeholder="Tìm kiếm món ăn theo tên..." onkeyup="searchByName()">
+
+            <select id="brandFilter" onchange="filterProducts()">
+                <option value="">Tất cả thương hiệu</option>
+                @foreach (var brand in ViewBag.Brands)
+                {
+                    <option value="@brand.Brand_ID">@brand.BrandName</option>
+                }
+            </select>
+
+            <select id="categoryFilter" onchange="filterProducts()">
+                <option value="">Tất cả loại</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.Category_ID">@category.CategoryName</option>
+                }
+            </select>
+
+            <select id="priceFilter" onchange="filterProducts()">
+                <option value="">Tất cả mức giá</option>
+                <option value="0-100000">Dưới 100,000 VND</option>
+                <option value="100000-300000">100,000 - 300,000 VND</option>
+                <option value="300000-500000">300,000 - 500,000 VND</option>
+                <option value="500000">Trên 500,000 VND</option>
+            </select>
+        </div>
+
+        <!-- Product List -->
+        <div class="menu-grid" id="menuGrid">
+            @foreach (var dish in Model)
+            {
+                <div class="menu-item"
+                     data-brand="@dish.Brand_ID"
+                     data-category="@dish.Category_ID">
+                    <img src="@dish.DishImage" alt="@dish.DishName">
+                    <h3>@dish.DishName</h3>
+                    <p class="price">@dish.Price.ToString("N0") đ</p>
+                    <p class="status">@dish.Status</p>
+                    <div class="buttons">
+                        <a href="/Menu/ChiTietSanPham/@dish.Dish_ID" class="btn-details">Xem Chi Tiết</a>
+                        <button onclick="addToCart(@dish.Dish_ID)" class="btn-add-cart">Thêm vào Giỏ</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+
+    <script src="/js/menu.js"></script>
+    </body>
+    </html>

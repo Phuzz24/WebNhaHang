@@ -1,0 +1,117 @@
+﻿.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.brand-section {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Wrapper slider */
+.product-slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    padding: 10px; /* Khoảng cách giữa nút và slider */
+}
+
+/* Sử dụng flexbox cho sản phẩm */
+.product-slider {
+    display: flex;
+    gap: 15px; /* Khoảng cách giữa các sản phẩm */
+    transition: transform 0.5s ease-in-out;
+    width: max-content;
+}
+
+/* Mỗi sản phẩm có cùng kích thước */
+.product-item1 {
+    flex: 1 0 22%; /* Mỗi sản phẩm chiếm 22% để có 4 sản phẩm một dòng */
+    max-width: 22%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+    /* Giữ kích thước hình ảnh đồng nhất */
+    .product-item1 img {
+        width: 100%;
+        height: 180px; /* Chiều cao cố định cho ảnh */
+        object-fit: cover; /* Đảm bảo ảnh không bị biến dạng */
+        border-radius: 10px 10px 0 0;
+    }
+
+/* Nội dung sản phẩm */
+.product-info1 {
+    padding: 10px;
+    min-height: 80px; /* Đảm bảo chiều cao đồng nhất cho phần nội dung */
+}
+
+    .product-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+.price {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Nút chuyển sản phẩm */
+.btn-prev, .btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+    .btn-prev:hover, .btn-next:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+.btn-prev {
+    left: -35px;
+}
+
+.btn-next {
+    right: -35px;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .product-item1 {
+        flex: 1 0 45%; /* Hiển thị 2 sản phẩm mỗi dòng */
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-item1 {
+        flex: 1 0 100%; /* Hiển thị 1 sản phẩm mỗi dòng */
+        max-width: 100%;
+    }
+}

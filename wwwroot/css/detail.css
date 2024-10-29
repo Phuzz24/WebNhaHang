@@ -1,0 +1,185 @@
+﻿/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+    .header .logo img {
+        width: 120px;
+    }
+
+    .header .text a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+        .header .text a:hover {
+            text-decoration: underline;
+        }
+
+    .header .iconz i {
+        margin: 0 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+/* Product Detail Container */
+.product-detail-container {
+    display: flex;
+    gap: 30px;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Media Section: Main Image */
+.product-media {
+    flex: 1;
+}
+
+.main-product-image {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .main-product-image:hover {
+        transform: scale(1.05);
+    }
+
+/* Product Info Section */
+.product-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+    .product-info-section h1 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+.price {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.status {
+    color: green;
+    font-weight: bold;
+}
+
+/* Button Add to Cart */
+.btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #218838;
+    }
+
+/* Feedback Box */
+.feedback-box {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.feedback-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feedback-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+    .feedback-btn:hover {
+        transform: scale(1.1);
+    }
+
+.happy-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.sad-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Thank You Message */
+.thank-you-message {
+    display: none;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Contact Section */
+.contact {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+    .contact img {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .contact h1 {
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+
+.contact-left {
+    text-align: left;
+}
+
+.contact-right h1 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+    }
+
+    .contact {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
